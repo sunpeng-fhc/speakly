@@ -1,0 +1,135 @@
+[
+  {
+    "id": 1,
+    "start": 0.59,
+    "end": 3.94,
+    "textEn": "English together",
+    "textZh": "英语一起学"
+  },
+  {
+    "id": 2,
+    "start": 4.14,
+    "end": 16.3,
+    "textEn": "Ordering at a coffee shop. Good morning. Can I get a coffee, please?",
+    "textZh": "在咖啡店点单。早上好，可以给我来杯咖啡吗？"
+  },
+  {
+    "id": 3,
+    "start": 18.14,
+    "end": 20.23,
+    "textEn": "Good morning",
+    "textZh": "早上好。"
+  },
+  {
+    "id": 4,
+    "start": 20.87,
+    "end": 21.87,
+    "textEn": "Absolutely",
+    "textZh": "当然没问题。"
+  },
+  {
+    "id": 5,
+    "start": 21.87,
+    "end": 27.55,
+    "textEn": "What type of coffee would you like? I'll have a cappuccino, please",
+    "textZh": "您要什么类型的咖啡呢？我要一杯卡布奇诺。"
+  },
+  {
+    "id": 6,
+    "start": 29.96,
+    "end": 31.96,
+    "textEn": "medium-sized if possible",
+    "textZh": "如果有的话，中杯的。"
+  },
+  {
+    "id": 7,
+    "start": 33.75,
+    "end": 35.27,
+    "textEn": "sure thing",
+    "textZh": "好的，没问题。"
+  },
+  {
+    "id": 8,
+    "start": 35.27,
+    "end": 41.69,
+    "textEn": "Would you like it for here or to go? I'll have it to go, please",
+    "textZh": "是堂食还是外带呢？请帮我打包带走吧。"
+  },
+  {
+    "id": 9,
+    "start": 44.01,
+    "end": 46.01,
+    "textEn": "Alright anything else",
+    "textZh": "还需要别的吗？"
+  },
+  {
+    "id": 10,
+    "start": 49.11,
+    "end": 52.41,
+    "textEn": "Actually, can I also get a chocolate chip muffin of?",
+    "textZh": "其实我还想再要一个巧克力豆玛芬。"
+  },
+  {
+    "id": 11,
+    "start": 54.72,
+    "end": 59.2,
+    "textEn": "Course one chocolate chip muffin anything else",
+    "textZh": "一份巧克力豆玛芬，还有别的吗？"
+  },
+  {
+    "id": 12,
+    "start": 61.6,
+    "end": 64.239,
+    "textEn": "Just the cappuccino and the muffin, please",
+    "textZh": "就是卡布奇诺和玛芬，谢谢。"
+  },
+  {
+    "id": 13,
+    "start": 66.78,
+    "end": 69.38,
+    "textEn": "Alright, that will be eight dollars",
+    "textZh": "好的，一共八美元。"
+  },
+  {
+    "id": 14,
+    "start": 70.17,
+    "end": 72.17,
+    "textEn": "cash or card",
+    "textZh": "现金还是刷卡呢？"
+  },
+  {
+    "id": 15,
+    "start": 72.21,
+    "end": 75.53,
+    "textEn": "I'll pay with card, please",
+    "textZh": "我用信用卡支付。"
+  },
+  {
+    "id": 16,
+    "start": 78.21,
+    "end": 80.12,
+    "textEn": "Here's your receipt",
+    "textZh": "这是你的收据"
+  },
+  {
+    "id": 17,
+    "start": 80.12,
+    "end": 82.92,
+    "textEn": "Your order will be ready in just a few minutes",
+    "textZh": "你点的餐几分钟就好了"
+  },
+  {
+    "id": 18,
+    "start": 84.94,
+    "end": 86.94,
+    "textEn": "Great. Thank you",
+    "textZh": "太好了，谢谢"
+  },
+  {
+    "id": 19,
+    "start": 87.18,
+    "end": 102.27,
+    "textEn": "Thanks for watching if you enjoyed this video, please give it a like and consider subscribing to my channel for more content like this",
+    "textZh": "如果你喜欢这个视频，请点赞并考虑订阅我的频道以获取更多类似内容"
+  }
+]
