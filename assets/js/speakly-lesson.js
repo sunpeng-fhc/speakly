@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const slowBtn = document.getElementById("slowBtn");
   const normalBtn = document.getElementById("normalBtn");
   const repeatBtn = document.getElementById("repeatBtn");
+  
 
   const wordPopup = document.getElementById("wordPopup");
   const closeWordPopupBtn = document.getElementById("closeWordPopup");

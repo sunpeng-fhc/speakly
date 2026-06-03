@@ -640,3 +640,46 @@
     font-size: 18px;
   }
 }
+
+.newsletter-wrap-three {
+    padding: 70px 0;
+}
+
+.newsletter-content .title {
+    margin-bottom: 12px;
+}
+
+.newsletter-content p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #5f6b7a;
+    max-width: 520px;
+}
+
+.newsletter-form form {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.newsletter-form .form-grp input {
+    min-width: 320px;
+    height: 60px;
+    border-radius: 14px;
+    border: 1px solid #e7edf5;
+    padding: 0 22px;
+    font-size: 15px;
+}
+
+.newsletter-form .btn {
+    height: 60px;
+    padding: 0 34px;
+    border-radius: 14px;
+    transition: 0.3s ease;
+}
+
+.newsletter-form .btn:hover {
+    transform: translateY(-2px);
+}
+
