@@ -1,54 +1,266 @@
 .speakly-category-area {
-  background: #f7fafc;
+  background: #f7f9fc;
 }
 
-.speakly-category-hero {
+/* ===========================
+   CATEGORY INTRO + CTA
+=========================== */
+
+.category-intro-cta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 36px;
+  align-items: stretch;
   background: #ffffff;
-  border-radius: 28px;
-  padding: 36px;
-  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);
+  border-radius: 30px;
+  padding: 42px;
+  box-shadow: 0 18px 55px rgba(15, 35, 75, 0.06);
+}
+
+.category-intro-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.speakly-breadcrumb {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.speakly-breadcrumb a {
+  color: #ff6f61;
+  font-weight: 700;
+}
+
+.speakly-breadcrumb span {
+  margin: 0 6px;
 }
 
 .speakly-category-tag {
   display: inline-flex;
+  width: fit-content;
   align-items: center;
-  gap: 6px;
-  background: #eef5ff;
-  color: #f4796c;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 8px 16px;
+  gap: 7px;
+  background: #fff0ee;
+  color: #ff6f61;
   border-radius: 999px;
+  padding: 8px 15px;
+  font-size: 13px;
+  font-weight: 800;
   margin-bottom: 18px;
 }
 
-.speakly-category-hero h1 {
-  font-size: 42px;
-  color: #16365f;
-  line-height: 1.2;
+.category-intro-content h1 {
+  max-width: 760px;
+  color: #173a63;
+  font-size: 46px;
+  line-height: 1.18;
   margin-bottom: 16px;
 }
 
-.speakly-category-hero p {
-  font-size: 18px;
-  color: #6b7280;
+.category-intro-content p {
+  max-width: 720px;
+  color: #667085;
+  font-size: 16px;
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+
+.category-intro-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.category-primary-btn,
+.category-secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 13px 24px;
+  font-size: 14px;
+  font-weight: 800;
+  transition: 0.25s ease;
+}
+
+.category-primary-btn {
+  background: #ff6f61;
+  color: #ffffff;
+}
+
+.category-primary-btn:hover {
+  color: #ffffff;
+  background: #ff5d50;
+  transform: translateY(-2px);
+}
+
+.category-secondary-btn {
+  background: #f8fafc;
+  color: #173a63;
+  border: 1px solid #e5e7eb;
+}
+
+.category-secondary-btn:hover {
+  color: #173a63;
+  background: #eef4fb;
+  transform: translateY(-2px);
+}
+
+.category-info-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.category-info-pills span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #f8fafc;
+  color: #5f6b7a;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  padding: 8px 13px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.category-info-pills i {
+  color: #ff6f61;
+}
+
+/* ===========================
+   START HERE CARD
+=========================== */
+
+.category-start-card {
+  background: linear-gradient(135deg, #173a63 0%, #102b4a 100%);
+  border-radius: 26px;
+  padding: 30px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 18px 45px rgba(23, 58, 99, 0.18);
+}
+
+.start-card-label {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.category-start-card h3 {
+  color: #ffffff;
+  font-size: 28px;
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+
+.category-start-card p {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 15px;
   line-height: 1.7;
-  max-width: 760px;
+  margin-bottom: 18px;
+}
+
+.start-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.start-card-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.start-card-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ff6f61;
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 13px 22px;
+  font-size: 14px;
+  font-weight: 800;
+  transition: 0.25s ease;
+}
+
+.start-card-btn:hover {
+  color: #ffffff;
+  background: #ff5d50;
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   SECTION TITLE
+=========================== */
+
+.section-title-wrap {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.section-subtitle {
+  display: inline-block;
+  color: #ff6f61;
+  font-size: 14px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.section-title-wrap .title-two {
+  color: #173a63;
   margin-bottom: 0;
 }
+
+.section-title-wrap p {
+  max-width: 520px;
+  color: #667085;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+/* ===========================
+   LESSON CARD
+=========================== */
 
 .speakly-lesson-card {
   background: #ffffff;
   border-radius: 22px;
   overflow: hidden;
   margin-bottom: 30px;
-  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);
-  transition: all 0.25s ease;
+  min-height: 100%;
+  box-shadow: 0 12px 38px rgba(15, 35, 75, 0.05);
+  transition: 0.25s ease;
 }
 
 .speakly-lesson-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 18px 45px rgba(15, 35, 75, 0.09);
 }
 
 .lesson-thumb {
@@ -63,14 +275,17 @@
 
 .lesson-badge {
   position: absolute;
-  left: 18px;
-  top: 18px;
-  background: #f4796c;
-  color: #ffffff;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 7px 12px;
+  top: 16px;
+  left: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ff6f61;
+  color: #fff;
   border-radius: 999px;
+  padding: 7px 13px;
+  font-size: 12px;
+  font-weight: 800;
 }
 
 .lesson-card-content {
@@ -78,184 +293,131 @@
 }
 
 .lesson-card-content h3 {
-  font-size: 22px;
-  line-height: 1.35;
+  font-size: 24px;
+  line-height: 1.3;
   margin-bottom: 12px;
 }
 
 .lesson-card-content h3 a {
-  color: #16365f;
-}
-
-.lesson-card-content h3 a:hover {
-  color: #f4796c;
-}
-
-.lesson-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 14px;
-}
-
-.lesson-meta span {
-  font-size: 13px;
-  color: #475569;
-  background: #f7fbff;
-  border: 1px solid #e5eef9;
-  border-radius: 999px;
-  padding: 6px 10px;
-}
-
-.lesson-meta i {
-  color: #f4796c;
-  margin-right: 5px;
+  color: #173a63;
 }
 
 .lesson-card-content p {
-  color: #6b7280;
+  color: #667085;
+  font-size: 15px;
   line-height: 1.7;
   margin-bottom: 18px;
 }
 
-.start-lesson-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: #f4796c;
-  color: #ffffff;
-  border-radius: 999px;
-  padding: 10px 18px;
-  font-weight: 600;
-}
-
-.start-lesson-btn:hover {
-  background: #477be0;
-  color: #ffffff;
-}
-
-.speakly-sidebar {
-  position: sticky;
-  top: 100px;
-}
-
-.speakly-sidebar-widget {
-  background: #ffffff;
-  border-radius: 22px;
-  padding: 24px;
-  margin-bottom: 24px;
-  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);
-}
-
-.speakly-sidebar-widget h4 {
-  color: #16365f;
-  font-size: 20px;
-  margin-bottom: 18px;
-}
-
-.speakly-sidebar-search {
-  display: flex;
-  border: 1px solid #e5eef9;
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-.speakly-sidebar-search input {
-  flex: 1;
-  border: none;
-  padding: 12px 16px;
-  outline: none;
-}
-
-.speakly-sidebar-search button {
-  width: 48px;
-  border: none;
-  background: #f4796c;
-  color: #ffffff;
-}
-
-.speakly-category-list li {
-  margin-bottom: 12px;
-}
-
-.speakly-category-list a {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #475569;
-  background: #f7fbff;
-  border: 1px solid #e5eef9;
-  border-radius: 14px;
-  padding: 12px 14px;
-  font-weight: 600;
-}
-
-.speakly-category-list a:hover {
-  color: #f4796c;
-  border-color: #f4796c;
-}
-
-.level-tags {
+.lesson-meta,
+.lesson-extra-meta {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  margin-bottom: 12px;
 }
 
-.level-tags a {
-  background: #f7fbff;
-  border: 1px solid #e5eef9;
-  color: #475569;
-  border-radius: 999px;
-  padding: 8px 13px;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.level-tags a:hover {
-  background: #f4796c;
-  color: #ffffff;
-  border-color: #f4796c;
-}
-
-.highlight-widget {
-  background: #16365f;
-}
-
-.highlight-widget h4,
-.highlight-widget p {
-  color: #ffffff;
-}
-
-.highlight-widget p {
-  margin-bottom: 18px;
-}
-
-.highlight-widget a {
+.lesson-meta span,
+.lesson-extra-meta span {
   display: inline-flex;
-  background: #f4796c;
-  color: #ffffff;
-  border-radius: 999px;
-  padding: 10px 16px;
+  align-items: center;
+  gap: 5px;
+  color: #667085;
+  font-size: 13px;
   font-weight: 600;
 }
+
+.lesson-meta i,
+.lesson-extra-meta i {
+  color: #ff6f61;
+}
+
+.start-lesson-btn,
+.load-more-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ff6f61;
+  color: #fff;
+  border-radius: 999px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 800;
+  transition: 0.25s ease;
+}
+
+.start-lesson-btn:hover,
+.load-more-btn:hover {
+  color: #fff;
+  background: #ff5d50;
+  transform: translateY(-2px);
+}
+
+.load-more-btn {
+  padding: 14px 30px;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
 
 @media (max-width: 991px) {
-  .speakly-sidebar {
-    position: static;
-    margin-top: 20px;
+  .category-intro-cta {
+    grid-template-columns: 1fr;
+    padding: 34px 28px;
   }
-}
 
-@media (max-width: 767px) {
-  .speakly-category-hero {
+  .category-intro-content h1 {
+    font-size: 36px;
+  }
+
+  .category-start-card {
     padding: 26px;
   }
 
-  .speakly-category-hero h1 {
-    font-size: 32px;
+  .section-title-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 575px) {
+  .speakly-category-area {
+    padding-top: 25px;
+  }
+
+  .category-intro-cta {
+    padding: 26px 20px;
+    border-radius: 24px;
+  }
+
+  .category-intro-content h1 {
+    font-size: 30px;
+  }
+
+  .category-intro-content p {
+    font-size: 15px;
+  }
+
+  .category-intro-actions {
+    flex-direction: column;
+  }
+
+  .category-primary-btn,
+  .category-secondary-btn,
+  .start-card-btn {
+    width: 100%;
+  }
+
+  .category-start-card h3 {
+    font-size: 24px;
   }
 
   .lesson-thumb img {
     height: 200px;
+  }
+
+  .lesson-card-content h3 {
+    font-size: 22px;
   }
 }

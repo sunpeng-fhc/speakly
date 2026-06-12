@@ -1,249 +1,127 @@
 <!doctype html>
 <html class="no-js" lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Speakly - Learn Real English Daily</title>
-        <meta name="description" content="Speakly - Learn Real English Daily">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Speakly - Daily Life English</title>
+    <meta name="description" content="Practice real-life English for everyday situations with Speakly.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
-        <!-- Place favicon.ico in the root directory -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
 
-        <!-- CSS here -->
-        <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/animate.min.css">
-        <link rel="stylesheet" href="assets/css/magnific-popup.css">
-        <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-        <link rel="stylesheet" href="assets/css/flaticon.css">
-        <link rel="stylesheet" href="assets/css/slick.css">
-        <link rel="stylesheet" href="assets/css/swiper-bundle.css">
-        <link rel="stylesheet" href="assets/css/default.css">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/responsive.css">
-        <link rel="stylesheet" href="assets/css/speakly-category.css">
-    </head>
-    <body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/flaticon.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.css">
+    <link rel="stylesheet" href="assets/css/default.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/speakly-category.css">
+</head>
 
-        <!-- preloader -->
-        <div id="preloader">
-            <div class="loader-inner">
-                <div id="loader">
-                    <h2 id="bg-loader">speakly<span>.</span></h2>
-                    <h2 id="fg-loader">speakly<span>.</span></h2>
-                </div>
-            </div>
+<body>
+
+<div id="preloader">
+    <div class="loader-inner">
+        <div id="loader">
+            <h2 id="bg-loader">Speakly<span>.</span></h2>
+            <h2 id="fg-loader">Speakly<span>.</span></h2>
         </div>
-        <!-- preloader-end -->
- 
-		<!-- Scroll-top -->
-        <button class="scroll-top scroll-to-target" data-target="html">
-            <i class="fas fa-angle-up"></i>
-        </button>
-        <!-- Scroll-top-end-->
+    </div>
+</div>
 
-        <!-- header-area -->
-        <div id="site-header"></div>
-        <!-- header-area-end -->
+<button class="scroll-top scroll-to-target" data-target="html">
+    <i class="fas fa-angle-up"></i>
+</button>
 
+<div id="site-header"></div>
 
-        <!-- main-area -->
-        <main class="fix" data-page-title="Daily Life English" data-nav="categories">
-            <div class="breadcrumb-area">
-                <div class="container">
-                <div class="breadcrumb-content">
-                    <nav class="speakly-breadcrumb" aria-label="breadcrumb">
+<main class="fix" data-page-title="Category" data-nav="categories">
+
+    <section class="speakly-category-area pt-40 pb-60">
+        <div class="container">
+
+            <div class="category-intro-cta mb-50">
+                <div class="category-intro-content">
+                    <nav class="speakly-breadcrumb mb-24" aria-label="breadcrumb">
                         <a href="index.html">Home</a>
                         <span>/</span>
-                        <span id="breadcrumbCurrent">Page</span>
+                        <span id="categoryBreadcrumb">Loading...</span>
                     </nav>
+
+                    <span id="categoryTag" class="speakly-category-tag">
+                       <i class="fas fa-book-open"></i> Loading...
+                    </span>
+
+                    <h1 id="categoryTitle">Loading category...</h1>
+
+                    <p id="categoryDescription">
+                        Please wait while we load lessons.
+                    </p>
+
+                    <div class="category-intro-actions">
+                        <a href="#allLessons" class="category-secondary-btn">
+                            Browse Lessons
+                        </a>
+
+                        <a id="startFirstLessonBtn" href="#" class="category-primary-btn">
+                            Start First Lesson
+                        </a>
+                    </div>
+
+                    <div id="categoryInfoPills" class="category-info-pills"></div>
                 </div>
+
+                <div id="featuredLessonCard" class="category-start-card">
+          <span class="start-card-label">
+            <i class="fas fa-star"></i> Start Here
+          </span>
+
+                    <h3>Loading...</h3>
+
+                    <p>Loading recommended lesson...</p>
                 </div>
             </div>
 
-            <section class="speakly-category-area pt-60 pb-60">
-                <div class="container">
-
-                <div class="speakly-category-hero mb-40">
-                    <span class="speakly-category-tag">
-                    <i class="fas fa-sun"></i> Daily Life English
-                    </span>
-                    <h1>Practice Real-Life English for Everyday Situations</h1>
-                    <p>
-                    Build confidence with short A1-A2 shadowing lessons for coffee shops,
-                    shopping, transportation, small talk, and daily conversations in Canada.
-                    </p>
+            <div id="allLessons" class="section-title-wrap mb-30">
+                <div>
+                    <span class="section-subtitle">All Lessons</span>
+                    <h3 class="title-two">Choose Your Next Practice</h3>
                 </div>
 
-                <div class="row">
-                    <div class="col-xl-8 col-lg-8">
+                <p>
+                    Each lesson is short, practical, and designed for listening, shadowing,
+                    and real-life English practice.
+                </p>
+            </div>
 
-                    <div class="row">
+            <div id="lessonList" class="row">
+                <p class="text-center">Loading lessons...</p>
+            </div>
 
-                        <div class="col-md-6">
-                            <div class="speakly-lesson-card">
-                                <div class="lesson-thumb">
-                                <a href="lesson-detail.html">
-                                    <img src="assets/img/blog/author_post02.jpg" alt="Ordering Coffee in Canada">
-                                </a>
-                                <span class="lesson-badge"><i class="fas fa-mug-hot"></i> Coffee Shop</span>
-                                </div>
+        </div>
+    </section>
 
-                                <div class="lesson-card-content">
-                                <h3><a href="lesson-detail.html">Ordering Coffee in Canada</a></h3>
-                                <div class="lesson-meta">
-                                    <span><i class="fas fa-seedling"></i> A1 Beginner</span>
-                                    <span><i class="fas fa-clock"></i> 5 mins</span>
-                                </div>
-                                <p>Practice useful phrases for ordering coffee with interactive subtitles and sentence replay.</p>
-                                <a href="lesson-detail.html" class="start-lesson-btn">Start Lesson</a>
-                                </div>
-                            </div>
-                        </div>
+</main>
 
-                        <div class="col-md-6">
-                            <div class="speakly-lesson-card">
-                                <div class="lesson-thumb">
-                                <a href="lesson-detail.html">
-                                    <img src="assets/img/blog/author_post01.jpg" alt="Small Talk at Work">
-                                </a>
-                                <span class="lesson-badge"><i class="fas fa-comments"></i> Small Talk</span>
-                                </div>
+<div id="site-footer"></div>
 
-                                <div class="lesson-card-content">
-                                <h3><a href="lesson-detail.html">Small Talk at Work</a></h3>
-                                <div class="lesson-meta">
-                                    <span><i class="fas fa-seedling"></i> A1 Beginner</span>
-                                    <span><i class="fas fa-clock"></i> 4 mins</span>
-                                </div>
-                                <p>Learn simple workplace small talk for greetings, weather, and casual conversations.</p>
-                                <a href="lesson-detail.html" class="start-lesson-btn">Start Lesson</a>
-                                </div>
-                            </div>
-                        </div>
+<script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+<script src="assets/js/slick.min.js"></script>
+<script src="assets/js/swiper-bundle.js"></script>
+<script src="assets/js/ajax-form.js"></script>
+<script src="assets/js/wow.min.js"></script>
+<script src="assets/js/include-layout.js"></script>
+<script src="assets/js/main.js"></script>
 
-                        <div class="col-md-6">
-                            <div class="speakly-lesson-card">
-                                <div class="lesson-thumb">
-                                <a href="lesson-detail.html">
-                                    <img src="assets/img/blog/blog_post04.jpg" alt="Taking the Bus">
-                                </a>
-                                <span class="lesson-badge"><i class="fas fa-bus"></i> Transportation</span>
-                                </div>
+<script src="assets/js/api/request.js"></script>
+<script src="assets/js/category.js"></script>
 
-                                <div class="lesson-card-content">
-                                <h3><a href="lesson-detail.html">Taking the Bus in Calgary</a></h3>
-                                <div class="lesson-meta">
-                                    <span><i class="fas fa-leaf"></i> A2 Elementary</span>
-                                    <span><i class="fas fa-clock"></i> 6 mins</span>
-                                </div>
-                                <p>Practice asking about routes, stops, and bus schedules in everyday English.</p>
-                                <a href="lesson-detail.html" class="start-lesson-btn">Start Lesson</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="speakly-lesson-card">
-                                <div class="lesson-thumb">
-                                <a href="lesson-detail.html">
-                                    <img src="assets/img/blog/blog_post02.jpg" alt="Grocery Shopping">
-                                </a>
-                                <span class="lesson-badge"><i class="fas fa-cart-shopping"></i> Shopping</span>
-                                </div>
-
-                                <div class="lesson-card-content">
-                                <h3><a href="lesson-detail.html">Grocery Shopping English</a></h3>
-                                <div class="lesson-meta">
-                                    <span><i class="fas fa-seedling"></i> A1 Beginner</span>
-                                    <span><i class="fas fa-clock"></i> 5 mins</span>
-                                </div>
-                                <p>Learn common phrases for finding items, asking prices, and checking out.</p>
-                                <a href="lesson-detail.html" class="start-lesson-btn">Start Lesson</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="pagination-wrap mt-60">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination list-wrap">
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                    
-
-                    </div>
-
-                    <div class="col-xl-4 col-lg-4">
-                    <aside class="speakly-sidebar">
-
-                        <div class="speakly-sidebar-widget">
-                        <h4>Search Lessons</h4>
-                        <form class="speakly-sidebar-search">
-                            <input type="text" placeholder="Search lessons . . .">
-                            <button type="submit"><i class="fas fa-search"></i></button>
-                        </form>
-                        </div>
-
-                        <div class="speakly-sidebar-widget">
-                        <h4>Practice by Category</h4>
-                        <ul class="speakly-category-list">
-                            <li><a href="#"><i class="fas fa-sun"></i> Daily Life English</a></li>
-                            <li><a href="#"><i class="fas fa-mug-hot"></i> Coffee Shop English</a></li>
-                            <li><a href="#"><i class="fas fa-cart-shopping"></i> Shopping English</a></li>
-                            <li><a href="#"><i class="fas fa-briefcase"></i> Work English</a></li>
-                            <li><a href="#"><i class="fas fa-bus"></i> Transportation</a></li>
-                        </ul>
-                        </div>
-
-                        <div class="speakly-sidebar-widget">
-                        <h4>Practice by Level</h4>
-                        <div class="level-tags">
-                            <a href="#">A1 Beginner</a>
-                            <a href="#">A2 Elementary</a>
-                            <a href="#">Listening</a>
-                            <a href="#">Shadowing</a>
-                        </div>
-                        </div>
-
-                        <div class="speakly-sidebar-widget highlight-widget">
-                        <h4>Today’s Lesson</h4>
-                        <p>Ordering Coffee in Canada</p>
-                        <a href="lesson-detail.html">Start Today’s Practice</a>
-                        </div>
-
-                    </aside>
-                    </div>
-                </div>
-
-                </div>
-            </section>
-
-            </main>
-        <!-- main-area-end -->
-
-        <!-- footer-area -->
-        <div id="site-footer"></div>
-        <!-- footer-area-end -->
-
-
-        <!-- JS here -->
-        <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/jquery.magnific-popup.min.js"></script>
-        <script src="assets/js/slick.min.js"></script>
-        <script src="assets/js/swiper-bundle.js"></script>
-        <script src="assets/js/ajax-form.js"></script>
-        <script src="assets/js/wow.min.js"></script>
-        <script src="assets/js/include-layout.js"></script>
-        <script src="assets/js/main.js"></script>
-    </body>
+</body>
 </html>

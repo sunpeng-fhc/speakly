@@ -1,5 +1,9 @@
 /* Speakly Lesson Detail Page */
 
+html {
+  scroll-behavior: auto !important;
+}
+
 .speakly-lesson-area {
   background: #f7fafc;
 }
@@ -683,3 +687,8 @@
     transform: translateY(-2px);
 }
 
+
+.transcript-list,
+.transcript-item {
+  overflow-anchor: none;
+}

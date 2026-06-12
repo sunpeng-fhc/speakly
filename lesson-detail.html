@@ -38,15 +38,6 @@
         </div>
         <!-- preloader-end -->
 
-        <!-- Dark/Light-toggle -->
-        <div class="darkmode-trigger">
-            <label class="modeSwitch">
-                <input type="checkbox">
-                <span class="icon"></span>
-            </label>
-        </div>
-        <!-- Dark/Light-toggle-end -->
-
 		<!-- Scroll-top -->
         <button class="scroll-top scroll-to-target" data-target="html">
             <i class="fas fa-angle-up"></i>
@@ -58,169 +49,145 @@
         <!-- header-area-end -->
 
 
-        <!-- main-area -->
-            <!-- Speakly Lesson Detail Main Area -->
-            <main class="fix" data-page-title="Lesson Detail" data-nav="lesson-detail">
- 
+        <main class="fix" data-page-title="Lesson Detail" data-nav="lesson-detail">
 
-              <!-- speakly-lesson-area -->
-              <section class="speakly-lesson-area pt-60 pb-60">
+            <section class="speakly-lesson-area pt-60 pb-60">
                 <div class="container">
-                  <div class="row justify-content-center">
+                    <div class="row justify-content-center">
 
-                    <div class="col-xl-9 col-lg-10">
+                        <div class="col-xl-9 col-lg-10">
 
-                      <!-- Lesson Header -->
-                      <div class="speakly-lesson-header mb-35">
-                        <span class="speakly-tag"> <i class="fas fa-mug-hot"></i> Coffee Shop English</span>
-                        <h1>Start Shadowing Practice</h1>
-                        <p>
-                          Practice real-life English with audio, bilingual subtitles, and sentence-by-sentence shadowing.
-                        </p>
+                            <!-- Lesson Header -->
+                            <div class="speakly-lesson-header mb-35">
+                            <span id="lessonCategory" class="speakly-tag">
+                              <i class="fas fa-book-open"></i> Loading...
+                            </span>
 
-                        <div class="speakly-meta">
-                          <span><i class="fas fa-layer-group"></i> A1 Beginner</span>
-                          <span><i class="fas fa-headphones"></i> Listening & Shadowing</span>
-                          <span><i class="fas fa-clock"></i> 5 Mins</span>
-                        </div>
-                      </div>
+                                <h1 id="lessonTitle">Loading lesson...</h1>
 
-                      <!-- Custom Audio Player -->
-                      <div class="speakly-audio-player mb-40">
-                        <div class="audio-main">
-                          <button id="playPauseBtn" class="audio-play-btn" type="button">
-                            <i class="fas fa-play"></i>
-                          </button>
+                                <p id="lessonSummary">
+                                    Please wait while we load this lesson.
+                                </p>
 
-                          <div class="audio-info">
-                            <h4>Ordering Coffee in Canada</h4>
-                            <p>A1 Beginner • Audio Shadowing Practice</p>
-
-                            <div class="audio-progress">
-                              <span id="currentTime">00:00</span>
-                              <input type="range" id="progressBar" value="0" min="0" max="100">
-                              <span id="duration">00:00</span>
+                                <div id="lessonMeta" class="speakly-meta">
+                                    <span><i class="fas fa-layer-group"></i> Loading...</span>
+                                    <span><i class="fas fa-headphones"></i> Loading...</span>
+                                    <span><i class="fas fa-clock"></i> Loading...</span>
+                                </div>
                             </div>
-                          </div>
-                        </div>
 
-                        <div class="audio-actions">
-                          <button id="slowBtn" type="button">0.75x</button>
-                          <button id="normalBtn" type="button" class="active">1x</button>
-                          <button id="repeatBtn" type="button">Repeat Sentence</button>
-                        </div>
+                            <!-- Custom Audio Player -->
+                            <div class="speakly-audio-player mb-40">
+                                <div class="audio-main">
+                                    <button id="playPauseBtn" class="audio-play-btn" type="button">
+                                        <i class="fas fa-play"></i>
+                                    </button>
 
-                        <audio id="lessonAudio">
-                          <source src="assets/audio/Ordering22714.mp3" type="audio/mpeg">
-                          Your browser does not support the audio element.
-                        </audio>
-                      </div>
+                                    <div class="audio-info">
+                                        <h4 id="audioTitle">Loading audio...</h4>
+                                        <p id="audioSubtitle">Audio Shadowing Practice</p>
 
-                      <!-- Transcript -->
-                      <div class="speakly-transcript-section mb-45">
-                        <div class="section-title-wrap mb-25">
-                          <h3 class="title-two">Sentence-by-Sentence Transcript</h3>
-                          <p>
-                            The transcript is displayed before playback. When the audio plays, the current sentence will be highlighted automatically.
-                            Click any sentence to replay it.
-                          </p>
-                        </div>
+                                        <div class="audio-progress">
+                                            <span id="currentTime">00:00</span>
+                                            <input type="range" id="progressBar" value="0" min="0" max="100">
+                                            <span id="duration">00:00</span>
+                                        </div>
+                                    </div>
+                                </div>
 
-                        <div id="transcriptList" class="transcript-list">
-                          <p class="transcript-loading">Loading transcript...</p>
-                        </div>
-                      </div>
+                                <div class="audio-actions">
+                                    <button id="slowBtn" type="button">0.75x</button>
+                                    <button id="normalBtn" type="button" class="active">1x</button>
+                                    <button id="repeatBtn" type="button">Repeat Sentence</button>
+                                </div>
 
-                      <!-- Lesson Info moved under transcript -->
-                      <div class="lesson-info-section mb-45">
-                        <h3 class="title-two mb-20">Lesson Info</h3>
-
-                        <div class="row">
-                          <div class="col-md-6">
-                            <div class="lesson-info-card">
-                              <strong>Level</strong>
-                              <span>A1 Beginner</span>
+                                <audio id="lessonAudio">
+                                    Your browser does not support the audio element.
+                                </audio>
                             </div>
-                          </div>
 
-                          <div class="col-md-6">
-                            <div class="lesson-info-card">
-                              <strong>Skill</strong>
-                              <span>Listening & Shadowing</span>
-                            </div>
-                          </div>
+                            <!-- Transcript -->
+                            <div class="speakly-transcript-section mb-45">
+                                <div class="section-title-wrap mb-25">
+                                    <h3 class="title-two">Sentence-by-Sentence Transcript</h3>
+                                    <p>
+                                        Listen, read, and click any sentence to replay it.
+                                    </p>
+                                </div>
 
-                          <div class="col-md-6">
-                            <div class="lesson-info-card">
-                              <strong>Topic</strong>
-                              <span>Coffee Shop English</span>
+                                <div id="transcriptList" class="transcript-list">
+                                    <p class="transcript-loading">Loading transcript...</p>
+                                </div>
                             </div>
-                          </div>
 
-                          <div class="col-md-6">
-                            <div class="lesson-info-card">
-                              <strong>Accent</strong>
-                              <span>Canadian English</span>
+                            <!-- Lesson Info -->
+                            <div class="lesson-info-section mb-45">
+                                <h3 class="title-two mb-20">Lesson Info</h3>
+
+                                <div id="lessonInfoList" class="row">
+                                    <div class="col-md-6">
+                                        <div class="lesson-info-card">
+                                            <strong>Level</strong>
+                                            <span>Loading...</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                          </div>
+
+                            <!-- How to Practice -->
+                            <div class="practice-guide-section">
+                                <h3 class="title-two mb-20">How to Practice</h3>
+
+                                <div class="practice-guide-card">
+                                    <ol>
+                                        <li>Listen to the full audio once.</li>
+                                        <li>Click any sentence you did not understand.</li>
+                                        <li>Use 0.75x speed if the audio feels too fast.</li>
+                                        <li>Turn on Repeat Sentence and read aloud after the audio.</li>
+                                    </ol>
+                                </div>
+                            </div>
+
                         </div>
-                      </div>
-
-                      <!-- How to Practice -->
-                      <div class="practice-guide-section">
-                        <h3 class="title-two mb-20">How to Practice</h3>
-
-                        <div class="practice-guide-card">
-                          <ol>
-                            <li>Listen to the full audio once.</li>
-                            <li>Click any sentence you did not understand.</li>
-                            <li>Use 0.75x speed if the audio feels too fast.</li>
-                            <li>Turn on Repeat Sentence and read aloud after the audio.</li>
-                          </ol>
-                        </div>
-                      </div>
 
                     </div>
-
-                  </div>
                 </div>
-              </section>
-              <!-- speakly-lesson-area-end -->
+            </section>
 
             <!-- Word Popup -->
             <div id="wordPopup" class="word-popup">
                 <div class="word-popup-card">
-                    <button id="closeWordPopup" class="word-popup-close" type="button" aria-label="Close word popup">
-                    <i class="fas fa-times"></i>
+                    <button id="closeWordPopup" class="word-popup-close" type="button">
+                        <i class="fas fa-times"></i>
                     </button>
 
                     <div class="word-popup-header">
-                    <h4 id="wordTitle">Word</h4>
+                        <h4 id="wordTitle">Word</h4>
 
-                    <div class="word-popup-pronunciation">
-                        <span id="wordPhonetic">/ /</span>
-                        <button id="wordAudioBtn" class="word-audio-btn" type="button" aria-label="Play pronunciation">
-                        <i class="fas fa-volume-up"></i>
-                        </button>
-                    </div>
+                        <div class="word-popup-pronunciation">
+                            <span id="wordPhonetic">/ /</span>
+                            <button id="wordAudioBtn" class="word-audio-btn" type="button">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                        </div>
                     </div>
 
                     <div class="word-popup-body">
-                    <p>
-                        <strong id="wordPart">n.</strong>
-                        <span id="wordMeaning">Loading meaning...</span>
-                    </p>
+                        <p>
+                            <strong id="wordPart">n.</strong>
+                            <span id="wordMeaning">Loading meaning...</span>
+                        </p>
 
-                    <p class="word-example" id="wordExample">Loading example...</p>
+                        <p class="word-example" id="wordExample">Loading example...</p>
                     </div>
 
                     <button id="continuePracticeBtn" class="continue-practice-btn" type="button">
-                    Continue Practice
+                        Continue Practice
                     </button>
                 </div>
             </div>
 
-            </main>
+        </main>
         <!-- main-area-end -->
 
         <!-- footer-area -->
@@ -236,8 +203,11 @@
         <script src="assets/js/swiper-bundle.js"></script>
         <script src="assets/js/ajax-form.js"></script>
         <script src="assets/js/wow.min.js"></script>
+
         <script src="assets/js/main.js"></script>
+
         <script src="assets/js/include-layout.js"></script>
+        <script src="assets/js/api/request.js"></script>
         <script src="assets/js/speakly-lesson.js"></script>
     </body>
 </html>

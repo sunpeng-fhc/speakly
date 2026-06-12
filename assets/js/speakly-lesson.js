@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const audio = document.getElementById("lessonAudio");
   const playPauseBtn = document.getElementById("playPauseBtn");
   const progressBar = document.getElementById("progressBar");
@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const slowBtn = document.getElementById("slowBtn");
   const normalBtn = document.getElementById("normalBtn");
   const repeatBtn = document.getElementById("repeatBtn");
-  
 
   const wordPopup = document.getElementById("wordPopup");
   const closeWordPopupBtn = document.getElementById("closeWordPopup");
@@ -20,13 +19,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const wordMeaning = document.getElementById("wordMeaning");
   const wordExample = document.getElementById("wordExample");
 
+  let lessonData = null;
   let subtitles = [];
+  let vocabularies = [];
   let currentSentenceIndex = -1;
   let repeatCurrent = false;
   let wasPlayingBeforeWordPopup = false;
   let currentWordAudio = "";
 
   const dictionaryCache = {};
+  const vocabularyMap = {};
+
+  let lastAudioTime = 0;
+  let lastActiveIndex = -1;
+  let isUserSeeking = false;
+
+  function getSlugFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("slug");
+  }
 
   function formatTime(seconds) {
     if (!seconds || Number.isNaN(seconds)) return "00:00";
@@ -37,18 +48,61 @@ document.addEventListener("DOMContentLoaded", () => {
     return `${String(min).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
   }
 
-  function normalizeSubtitleItem(item, index) {
-    return {
-      id: item.id || index + 1,
-      start: Number(item.start ?? item.startTime ?? 0),
-      end: Number(item.end ?? item.endTime ?? 0),
-      textEn: item.textEn || item.en || item.text || "",
-      textZh: item.textZh || item.zh || item.translation || ""
-    };
+  // function formatDuration(seconds) {
+  //   if (!seconds) return "Practice Time";
+  //
+  //   const minutes = Math.ceil(seconds / 60);
+  //   return `${minutes} Mins`;
+  // }
+
+  function formatDuration(seconds) {
+    if (!seconds) return "";
+
+    const totalSeconds = Number(seconds);
+    const minutes = Math.floor(totalSeconds / 60);
+    const remainingSeconds = totalSeconds % 60;
+
+    if (minutes === 0) {
+      return `${remainingSeconds}s`;
+    }
+
+    return `${minutes}:${String(remainingSeconds).padStart(2, "0")}`;
   }
 
   function cleanWord(rawWord) {
-    return rawWord.toLowerCase().replace(/[^a-z'-]/g, "").replace(/^'+|'+$/g, "");
+    return rawWord
+        .toLowerCase()
+        .replace(/[^a-z'-]/g, "")
+        .replace(/^'+|'+$/g, "");
+  }
+
+  function normalizeSubtitleItem(item, index) {
+    return {
+      id: item.id || index + 1,
+      start: Number(item.startTime ?? 0),
+      end: Number(item.endTime ?? 0),
+      textEn: item.sentence || "",
+      textZh: item.translation || "",
+      sortOrder: item.sortOrder ?? index
+    };
+  }
+
+  function buildVocabularyMap(list) {
+    list.forEach(item => {
+      if (!item.word) return;
+
+      const key = cleanWord(item.word);
+
+      if (!key) return;
+
+      vocabularyMap[key] = {
+        word: item.word,
+        phonetic: item.phonetic || "/ /",
+        part: item.partOfSpeech || "-",
+        meaning: item.meaning || item.simpleDefinition || "No meaning available.",
+        example: item.exampleSentence || "No example sentence available."
+      };
+    });
   }
 
   function wrapWords(text) {
@@ -65,8 +119,91 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updatePlayIcon(isPlaying) {
     playPauseBtn.innerHTML = isPlaying
-      ? `<i class="fas fa-pause"></i>`
-      : `<i class="fas fa-play"></i>`;
+        ? `<i class="fas fa-pause"></i>`
+        : `<i class="fas fa-play"></i>`;
+  }
+
+  function renderLessonHeader(lesson) {
+    const categoryEl = document.getElementById("lessonCategory");
+    const titleEl = document.getElementById("lessonTitle");
+    const summaryEl = document.getElementById("lessonSummary");
+    const metaEl = document.getElementById("lessonMeta");
+
+    if (categoryEl) {
+      categoryEl.innerHTML = `
+        <i class="fas fa-book-open"></i> ${lesson.categoryName || "English Lesson"}
+      `;
+    }
+
+    if (titleEl) {
+      titleEl.textContent = lesson.title || "Untitled Lesson";
+    }
+
+    if (summaryEl) {
+      summaryEl.textContent = lesson.summary || "Practice real English with audio and subtitles.";
+    }
+
+    if (metaEl) {
+      metaEl.innerHTML = `
+        <span><i class="fas fa-layer-group"></i> ${lesson.level || "A1 Beginner"}</span>
+        <span><i class="fas fa-headphones"></i> Listening & Shadowing</span>
+        <span><i class="fas fa-clock"></i> ${formatDuration(lesson.durationSeconds)}</span>
+      `;
+    }
+  }
+
+  function renderAudioInfo(lesson) {
+    const audioTitle = document.getElementById("audioTitle");
+    const audioSubtitle = document.getElementById("audioSubtitle");
+
+    if (audioTitle) {
+      audioTitle.textContent = lesson.title || "Lesson Audio";
+    }
+
+    if (audioSubtitle) {
+      audioSubtitle.textContent = `${lesson.level || "A1 Beginner"} • Audio Shadowing Practice`;
+    }
+
+    if (lesson.audioUrl) {
+      audio.src = lesson.audioUrl;
+      audio.load();
+    }
+  }
+
+  function renderLessonInfo(lesson) {
+    const lessonInfoList = document.getElementById("lessonInfoList");
+
+    if (!lessonInfoList) return;
+
+    lessonInfoList.innerHTML = `
+      <div class="col-md-6">
+        <div class="lesson-info-card">
+          <strong>Level</strong>
+          <span>${lesson.level || "A1 Beginner"}</span>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="lesson-info-card">
+          <strong>Skill</strong>
+          <span>Listening & Shadowing</span>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="lesson-info-card">
+          <strong>Topic</strong>
+          <span>${lesson.categoryName || "General English"}</span>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="lesson-info-card">
+          <strong>Duration</strong>
+          <span>${formatDuration(lesson.durationSeconds)}</span>
+        </div>
+      </div>
+    `;
   }
 
   function renderTranscript() {
@@ -80,7 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="transcript-time">${formatTime(item.start)}</div>
         <div class="transcript-content">
           <div class="transcript-text-en">${wrapWords(item.textEn)}</div>
-          <div class="transcript-text-zh">${item.textZh}</div>
+          <div class="transcript-text-zh">${item.textZh || ""}</div>
         </div>
       </div>
     `).join("");
@@ -104,6 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function setActiveSentence(index) {
     if (index < 0 || index >= subtitles.length) return;
+    if (index === currentSentenceIndex) return;
 
     currentSentenceIndex = index;
 
@@ -115,10 +253,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (activeItem) {
       activeItem.classList.add("active");
-      activeItem.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-      });
     }
   }
 
@@ -127,10 +261,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!sentence) return;
 
+    isUserSeeking = true;
+    lastActiveIndex = index;
+
     audio.currentTime = sentence.start;
     audio.play();
+
     setActiveSentence(index);
     updatePlayIcon(true);
+  }
+
+  function getCurrentSubtitleIndex(currentTime) {
+    let activeIndex = -1;
+
+    for (let i = 0; i < subtitles.length; i++) {
+      if (currentTime >= subtitles[i].start) {
+        activeIndex = i;
+      } else {
+        break;
+      }
+    }
+
+    return activeIndex;
   }
 
   function setSpeed(rate) {
@@ -154,10 +306,27 @@ document.addEventListener("DOMContentLoaded", () => {
     wordTitle.textContent = word;
     wordPhonetic.textContent = "Not found";
     wordPart.textContent = "-";
-    wordMeaning.textContent = "Sorry, this word is not available in the dictionary yet.";
+    wordMeaning.textContent = "Sorry, this word is not available yet.";
     wordExample.textContent = "Try another word from the transcript.";
     currentWordAudio = "";
     wordAudioBtn.disabled = true;
+  }
+
+  function showLocalVocabulary(wordKey) {
+    const localWord = vocabularyMap[wordKey];
+
+    if (!localWord) return false;
+
+    wordTitle.textContent = localWord.word;
+    wordPhonetic.textContent = localWord.phonetic;
+    wordPart.textContent = localWord.part;
+    wordMeaning.textContent = localWord.meaning;
+    wordExample.textContent = localWord.example;
+
+    currentWordAudio = "";
+    wordAudioBtn.disabled = true;
+
+    return true;
   }
 
   function parseDictionaryResponse(data, fallbackWord) {
@@ -166,9 +335,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!entry) return null;
 
     const phoneticItem = entry.phonetics?.find(item => item.text && item.audio)
-      || entry.phonetics?.find(item => item.text)
-      || entry.phonetics?.find(item => item.audio)
-      || {};
+        || entry.phonetics?.find(item => item.text)
+        || entry.phonetics?.find(item => item.audio)
+        || {};
 
     const meaning = entry.meanings?.[0];
     const definition = meaning?.definitions?.[0];
@@ -188,7 +357,9 @@ document.addEventListener("DOMContentLoaded", () => {
       return dictionaryCache[word];
     }
 
-    const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`);
+    const response = await fetch(
+        `https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`
+    );
 
     if (!response.ok) {
       throw new Error(`Dictionary lookup failed: ${response.status}`);
@@ -213,6 +384,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     wordPopup.classList.add("show");
     setWordPopupLoading(wordKey);
+
+    const hasLocalWord = showLocalVocabulary(wordKey);
+
+    if (hasLocalWord) return;
 
     try {
       const wordData = await fetchWordDefinition(wordKey);
@@ -239,29 +414,38 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  async function loadSubtitles() {
+  async function loadLessonDetail() {
+    const slug = getSlugFromUrl();
+
+    if (!slug) {
+      transcriptList.innerHTML = `<p class="transcript-loading">Lesson slug is missing.</p>`;
+      return;
+    }
+
     try {
-      const response = await fetch("assets/data/Ordering22714.json");
+      transcriptList.innerHTML = `<p class="transcript-loading">Loading transcript...</p>`;
 
-      if (!response.ok) {
-        throw new Error(`Subtitle file not found: ${response.status}`);
-      }
+      lessonData = await SpeaklyAPI.getLessonBySlug(slug);
 
-      const data = await response.json();
+      subtitles = (lessonData.segments || [])
+          .map(normalizeSubtitleItem)
+          .sort((a, b) => a.start - b.start);
 
-      const rawSubtitles = Array.isArray(data)
-        ? data
-        : data.subtitles || data.items || [];
+      vocabularies = lessonData.vocabularies || [];
 
-      subtitles = rawSubtitles.map(normalizeSubtitleItem);
+      buildVocabularyMap(vocabularies);
 
+      renderLessonHeader(lessonData);
+      renderAudioInfo(lessonData);
+      renderLessonInfo(lessonData);
       renderTranscript();
+
     } catch (error) {
-      console.error("Failed to load subtitles:", error);
+      console.error("Failed to load lesson detail:", error);
 
       transcriptList.innerHTML = `
         <p class="transcript-loading">
-          Failed to load transcript. Please check the JSON file path or format.
+          Failed to load lesson detail. Please check the API or slug.
         </p>
       `;
     }
@@ -281,26 +465,46 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+
   audio.addEventListener("timeupdate", () => {
+
+
+
     const currentTime = audio.currentTime;
 
     currentTimeText.textContent = formatTime(currentTime);
     progressBar.value = audio.duration
-      ? (currentTime / audio.duration) * 100
-      : 0;
+        ? (currentTime / audio.duration) * 100
+        : 0;
 
-    const index = subtitles.findIndex(sentence =>
-      currentTime >= sentence.start && currentTime <= sentence.end
-    );
+    const index = getCurrentSubtitleIndex(currentTime);
 
-    if (index !== -1 && index !== currentSentenceIndex) {
-      setActiveSentence(index);
+    console.log({
+      currentTime,
+      index,
+      sentence: subtitles[index]?.textEn,
+      start: subtitles[index]?.start
+    });
+
+    if (index === -1) return;
+
+    if (index < lastActiveIndex && !isUserSeeking) {
+      return;
     }
+
+    if (index !== currentSentenceIndex) {
+      setActiveSentence(index);
+      lastActiveIndex = index;
+    }
+
+    lastAudioTime = currentTime;
+    isUserSeeking = false;
 
     if (repeatCurrent && currentSentenceIndex !== -1) {
       const currentSentence = subtitles[currentSentenceIndex];
 
       if (currentTime >= currentSentence.end) {
+        isUserSeeking = true;
         audio.currentTime = currentSentence.start;
         audio.play();
       }
@@ -310,6 +514,7 @@ document.addEventListener("DOMContentLoaded", () => {
   progressBar.addEventListener("input", () => {
     if (!audio.duration) return;
 
+    isUserSeeking = true;
     audio.currentTime = (progressBar.value / 100) * audio.duration;
   });
 
@@ -363,5 +568,5 @@ document.addEventListener("DOMContentLoaded", () => {
     pronunciation.play();
   });
 
-  loadSubtitles();
+  loadLessonDetail();
 });
